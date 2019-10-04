@@ -1,19 +1,24 @@
 package CommentFilter;
 
+import java.util.Scanner;
 import java.util.Vector;
 
-class Rule {
-    private Vector<String> words;
+abstract class Rule {
+    protected static Vector<String> words;
 
     Rule(){
         words = new Vector<>();
     }
 
     boolean match(String str){
-        return  (words.contains(str));
-    }
-
-    void addWord(String str){
-        words.addElement(str);
+        for(String string : words){
+            System.out.println(string);
+        }
+        Scanner tokenize = new Scanner(str);
+        while(tokenize.hasNext()){
+            if (words.contains(tokenize.next()))
+                return true;
+        }
+        return false;
     }
 }
