@@ -9,8 +9,7 @@ class Comment {
         this.filter = filter;
     }
 
-    public boolean isValid(){
+    boolean isValid(){
         return filter.isValid(userComment);
     }
-
 }

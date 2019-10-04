@@ -2,18 +2,17 @@ package CommentFilter;
 
 import java.util.Vector;
 
-class Rule {
-    private Vector<String> words;
+abstract class Rule {
+    protected static Vector<String> words;
 
     Rule(){
         words = new Vector<>();
     }
 
     boolean match(String str){
-        return  (words.contains(str));
-    }
-
-    void addWord(String str){
-        words.addElement(str);
+        for(String string : words){
+            System.out.println(string);
+        }
+        return (words.contains(str));
     }
 }
