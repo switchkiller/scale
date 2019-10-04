@@ -1,11 +1,15 @@
 package CommentFilter;
 
 public class EmoticonRuleImpl extends Rule {
-
+    String[] words;
     EmoticonRuleImpl(String[] strings){
-        for (String string : strings) {
-            words.addElement(string);
-        }
+        words = strings;
     }
 
+    @Override
+    void addWordToDictionary() {
+        for(String word : words){
+            Rule.words.addElement(word);
+        }
+    }
 }

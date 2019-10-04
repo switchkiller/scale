@@ -5,7 +5,7 @@ import java.util.Vector;
 
 abstract class Rule {
     protected static Vector<String> words;
-
+    abstract void addWordToDictionary();
     Rule(){
         words = new Vector<>();
     }

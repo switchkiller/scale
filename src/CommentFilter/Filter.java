@@ -11,6 +11,7 @@ class Filter {
 
     public void addRule(Rule rule){
         rules.addElement(rule);
+        rule.addWordToDictionary();
     }
 
     public boolean isValid(String str){

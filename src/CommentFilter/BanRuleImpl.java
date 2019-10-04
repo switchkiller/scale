@@ -1,9 +1,15 @@
 package CommentFilter;
 
 class BanRuleImpl extends Rule{
+    String[] words;
     BanRuleImpl(String[] strings){
-        for (String string:strings) {
-            words.addElement(string);
+        words = strings;
+    }
+
+    @Override
+    void addWordToDictionary() {
+        for(String word : words){
+            Rule.words.addElement(word);
         }
     }
 }
