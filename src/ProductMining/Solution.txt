@@ -1,0 +1,13 @@
+High Level Architecture:
+
+Pre sale:
+
+Company needs to update products available from warehouse and stock for sale.
+
+
+Main :
+
+1. Sale begins
+2. Every user is a thread. Every thread makes a purchase if and only if product is in stock.
+3. So for sale to interact with user, we will design a class which is making sale on behalf of multiple users.
+
