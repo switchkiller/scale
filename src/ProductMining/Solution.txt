@@ -11,3 +11,9 @@ Main :
 2. Every user is a thread. Every thread makes a purchase if and only if product is in stock.
 3. So for sale to interact with user, we will design a class which is making sale on behalf of multiple users.
 
+
+
+Do abstract class have a constructor? -> Yes
+
+TODO:
+1. Check the flow for Sales, Sale and Product class. We update product from Sales Department, and Sale is able to get it..

@@ -13,7 +13,7 @@ We have to perform following task to manipulate sales data.
 
 1. Find the most frequent K items that we sold every Friday.
 
-2. Find the most frequent K items that we have sold in a week.
+2. Find the most frequent K items that we have sold in a month by sale. By this we are going to put Ads before sale of specific items so sale increase even more.
 
 Todo: We will begin with module to apply dynamic fare on Products we are having.
 
