@@ -15,5 +15,6 @@ Main :
 
 Do abstract class have a constructor? -> Yes
 
+When using parameterized constructor always declare the access level. Constructors never have a return type i.e they are not void and so on. Always take care of these things.
 TODO:
 1. Check the flow for Sales, Sale and Product class. We update product from Sales Department, and Sale is able to get it..

@@ -1,10 +1,10 @@
 package ProductMining;
 
 public class Product {
-    private String mName;
-    private int mCostPrice;
-    private int mSalePrice;
-    private double mDiscount;
+    public String mName;
+    public int mCostPrice;
+    public int mSalePrice;
+    public double mDiscount;
 
     Product(String name, int costPrice, int salePrice, double discount){
         mName = name;
@@ -12,6 +12,8 @@ public class Product {
         mSalePrice = salePrice;
         mDiscount = discount;
     }
+
+
 
 
 

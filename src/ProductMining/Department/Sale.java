@@ -7,7 +7,7 @@ import java.util.List;
 
 public abstract class Sale {
     public int mSaletype;
-    public int mSaleEpoch;
+    public long mSaleEpoch;
     private List<Product> mProducts;
 
     /*
@@ -31,6 +31,9 @@ public abstract class Sale {
     public void applyDiscountOnAllProducts(final double discount){
         // Process product list and apply discount. Remember the list is hidden from all other people. Discount and product list both are abstract
         // do something
+        for (Product product : mProducts){
+            product.mDiscount = discount;
+        }
     }
 
 
@@ -38,8 +41,14 @@ public abstract class Sale {
         return mSaletype;
     }
 
-    public int getSaleDuration(){
+    public long getSaleDuration(){
         return mSaleEpoch;
+    }
+
+    public void printAllProducts(){
+        for (Product product : mProducts){
+            System.out.println(product.mName + " " + product.mCostPrice + " " + product.mSalePrice + " " + product.mDiscount);
+        }
     }
 
 }
