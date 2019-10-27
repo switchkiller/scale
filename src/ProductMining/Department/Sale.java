@@ -1,14 +1,13 @@
 package ProductMining.Department;
 
-import ProductMining.Department.Sales;
 import ProductMining.Product;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Sale {
-    private int mSaletype;
-    private int mSaleEpoch;
+    public int mSaletype;
+    public int mSaleEpoch;
     private List<Product> mProducts;
 
     /*
@@ -20,14 +19,20 @@ public abstract class Sale {
         mProducts = new ArrayList<>();
     }
 
-    private void updateProduct(List<Product> products){
+    private void updateProductList(List<Product> products){
         mProducts = products;
     }
 
-    public void updateProduct(){
-        List<Product> products = Sales.getProductListForSale();
-        updateProduct(products);
+    public void updateProductList(){
+        List<Product> products = Sales.getProductListForSale(mSaletype);
+        updateProductList(products);
     }
+
+    public void applyDiscountOnAllProducts(final double discount){
+        // Process product list and apply discount. Remember the list is hidden from all other people. Discount and product list both are abstract
+        // do something
+    }
+
 
     public int getSaleType(){
         return mSaletype;
@@ -35,14 +40,6 @@ public abstract class Sale {
 
     public int getSaleDuration(){
         return mSaleEpoch;
-    }
-
-    public void setSaleType(int type){
-        mSaletype = type;
-    }
-
-    public void setSaleDuration(int epoch){
-        mSaleEpoch = epoch;
     }
 
 }

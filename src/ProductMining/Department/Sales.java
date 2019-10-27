@@ -5,6 +5,8 @@ import ProductMining.Product;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ProductMining.Department.FridaySale.FRIDAY_SALE;
+
 public class Sales {
     private static Sales mSales = null;
     private List<Product> mProduct;
@@ -20,8 +22,11 @@ public class Sales {
         mSales.mProduct = product;
     }
 
-    public static List<Product> getProductListForSale(){
-        return mSales.mProduct;
+    public static List<Product> getProductListForSale(final int saleType){
+        if (saleType == FRIDAY_SALE){
+            return mSales.mProduct;
+        }
+        return null;
     }
 
     public static Sales getInstance(){
