@@ -1,6 +1,7 @@
-package ProductMining.Department;
+package ProductMining.Department.Sales;
 
-import ProductMining.Product;
+import ProductMining.Customer.User;
+import ProductMining.Products.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,8 @@ public abstract class Sale {
     public int mSaletype;
     public long mSaleEpoch;
     private List<Product> mProducts;
+    private long mSaleStartTime;
+    private long mSaleEndTime;
 
     /*
     * Product should be private property of sale as products to be discounted is decided by some other
@@ -36,6 +39,17 @@ public abstract class Sale {
         }
     }
 
+    public void startSale(){
+        mSaleStartTime = System.currentTimeMillis();
+        mSaleEndTime = mSaleStartTime + mSaleEpoch;
+    }
+
+
+
+    public boolean isSaleLive(){
+        long currentTime = System.currentTimeMillis() + 500;
+        return currentTime >= mSaleStartTime && currentTime <= mSaleEndTime;
+    }
 
     public int getSaleType(){
         return mSaletype;
@@ -48,6 +62,15 @@ public abstract class Sale {
     public void printAllProducts(){
         for (Product product : mProducts){
             System.out.println(product.mName + " " + product.mCostPrice + " " + product.mSalePrice + " " + product.mDiscount);
+        }
+    }
+
+    public void purchase(User user, final String item){
+        for (Product product : mProducts){
+            if (product.mName.equals(item)){
+                System.out.println("Item purchased by " + user.mUsername + ": " + item);
+                break;
+            }
         }
     }
 

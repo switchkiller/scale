@@ -1,12 +1,12 @@
-package ProductMining;
+package ProductMining.Products;
 
 public class Product {
-    public String mName;
+    public final String mName;
     public int mCostPrice;
     public int mSalePrice;
     public double mDiscount;
 
-    Product(String name, int costPrice, int salePrice, double discount){
+    public Product(final String name, int costPrice, int salePrice, double discount){
         mName = name;
         mCostPrice = costPrice;
         mSalePrice = salePrice;

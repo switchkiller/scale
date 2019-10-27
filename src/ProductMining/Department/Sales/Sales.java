@@ -1,11 +1,11 @@
-package ProductMining.Department;
+package ProductMining.Department.Sales;
 
-import ProductMining.Product;
+import ProductMining.Products.Product;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static ProductMining.Department.FridaySale.FRIDAY_SALE;
+import static ProductMining.Department.Sales.FridaySale.FRIDAY_SALE;
 
 public class Sales {
     private static Sales mSales = null;

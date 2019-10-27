@@ -1,4 +1,4 @@
-package ProductMining.Department;
+package ProductMining.Department.Sales;
 
 public class FridaySale extends Sale {
     public static final int FRIDAY_SALE = 1;
@@ -9,6 +9,5 @@ public class FridaySale extends Sale {
         mDiscountPercent = discount;
         mSaleEpoch = epoch;
         updateProductList();
-        applyDiscountOnAllProducts(mDiscountPercent);
     }
 }
