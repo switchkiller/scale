@@ -19,14 +19,19 @@ public class Main {
         List<Product> productList;
         productList = new ArrayList<>();
 
-        for (int i = 0; i < 20; i++){
+        for (int i = 0; i < 5; i++){
             Product product= new Product("Brush", 20, 50, 0);
+            productList.add(product);
+        }
+
+        for (int i = 0; i < 5; i++){
+            Product product= new Product("Toolbox", 10, 50, 0);
             productList.add(product);
         }
 
         Sales.init(productList);
 
-        Sale fridaySale = new FridaySale(20,500);
+        Sale fridaySale = new FridaySale(20,10000);
 
         /*
         * Write a transaction history for every item purchase with UID and Transaction ID
@@ -45,7 +50,7 @@ public class Main {
 
         // Observe the code of User class
         User newUser1 = new User("Barun" ,"Brush", fridaySale);
-        User newUser2 = new User("Shubham" , "Brush", fridaySale);
+        User newUser2 = new User("Shubham" , "Toolbox", fridaySale);
 
 
     }

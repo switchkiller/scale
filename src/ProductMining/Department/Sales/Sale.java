@@ -1,6 +1,7 @@
 package ProductMining.Department.Sales;
 
 import ProductMining.Customer.User;
+import ProductMining.Department.audit.Records;
 import ProductMining.Products.Product;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ public abstract class Sale {
     private List<Product> mProducts;
     private long mSaleStartTime;
     private long mSaleEndTime;
+    private Records mRecords;
 
     /*
     * Product should be private property of sale as products to be discounted is decided by some other
@@ -20,6 +22,7 @@ public abstract class Sale {
 
     Sale(){
         mProducts = new ArrayList<>();
+        mRecords = new Records();
     }
 
     private void updateProductList(List<Product> products){
@@ -66,9 +69,12 @@ public abstract class Sale {
     }
 
     public void purchase(User user, final String item){
+//        We are doing a linear search of item on product list.
         for (Product product : mProducts){
             if (product.mName.equals(item)){
-                System.out.println("Item purchased by " + user.mUsername + ": " + item);
+                mProducts.remove(product);
+                long timestamp = System.currentTimeMillis();
+                mRecords.makeTransaction(user.mUsername, product,timestamp);
                 break;
             }
         }
