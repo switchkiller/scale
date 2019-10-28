@@ -25,7 +25,12 @@ public class Main {
         }
 
         for (int i = 0; i < 5; i++){
-            Product product= new Product("Toolbox", 10, 50, 0);
+            Product product= new Product("Toolbox", 10, 40, 0);
+            productList.add(product);
+        }
+
+        for (int i = 0; i < 5; i++){
+            Product product= new Product("Soap", 30, 40, 0);
             productList.add(product);
         }
 
@@ -51,7 +56,7 @@ public class Main {
         // Observe the code of User class
         User newUser1 = new User("Barun" ,"Brush", fridaySale);
         User newUser2 = new User("Shubham" , "Toolbox", fridaySale);
-
+        User newUser3 = new User("Babnish", "Soap", fridaySale);
 
     }
 }
