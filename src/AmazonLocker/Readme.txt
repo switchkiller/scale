@@ -1,4 +1,4 @@
-# We are going to design Amazon Logistic system from scratch.
+# We are going to design Amazon Logistic system from scratch. This is going to be a full fledged design so that we can practically think about everything.
 
 This will be just a high level design at first and we will try to improve.
 
@@ -29,6 +29,27 @@ Logistics:
 
 Self explanatory. It is going to fun to implement Logistics :p
 
-ProductManager:
+Lets get started
 
-Here we intend to handle the most basic product at a high level. So lets jump right in :p
+
+LogisticManager:
+
+Logistic Manager will control Package Facilities.
+It will decide what package goes from which package facility to which package facility based upon destination.
+If we are to nearest locker to user, we will simply drop package to desired locker.
+
+We are going to use pin codes and represent them as graphs in which path exists.
+
+Our PS would be: Find the shortest path from A to B i.e A PackageFacility to B PackageFacility for a Package package.
+
+Questions:
+
+Q. Is it best to decide which locker we are going to store package early on or not ? Keeping in mind user customer perspective first and logistics second!
+-> Answer is no! We cannot hold package more than K days. So obviously, if we choose static behaviour, we are never going to make use of resource properly.
+-> Its best to decide LockerFacility once Package reaches last PackageFacility.
+
+So, basically we are going to adopt, First come first serve facility. (Win Win or Loss? )
+
+Q. What about the priority customer? Are all customer treated equal? What about those who are making good profits to company?
+
+
