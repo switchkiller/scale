@@ -1,19 +1,12 @@
-package AmazonLocker.ProductManager;
+package AmazonLocker.LogisticsManager;
 
 import AmazonLocker.CommonUtils.Dimen;
 
-public class Product {
+public class Package {
     private int mProductId;
     private Dimen mDimension;
 
-    public Product(){
+    public Package(){
         mDimension = new Dimen();
     }
-
-
-
-
-
-
-
 }
