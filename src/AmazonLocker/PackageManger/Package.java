@@ -1,4 +1,4 @@
-package AmazonLocker.LogisticsManager;
+package AmazonLocker.PackageManger;
 
 import AmazonLocker.CommonUtils.Dimen;
 

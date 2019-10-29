@@ -3,15 +3,16 @@ package AmazonLocker.LogisticsManager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LogisticsManager extends LogisticManagerImpl{
-    public static LogisticsManager mLogisticManager = null;
+public class LogisticsManager implements ILogisticManager{
+    private static LogisticsManager mLogisticManager = null;
     private List<List<Integer>> mGraph;
 
     private LogisticsManager(){
         mLogisticManager.mGraph = new ArrayList<>();
     }
 
-    public static void addPackageFacility(int u, int v, int d){
+    @Override
+    public void addPackageFacility(int u, int v, int d){
         if (mLogisticManager.mGraph.get(u) == null){
             mLogisticManager.mGraph.set(u, new ArrayList<>());
         }
@@ -23,6 +24,10 @@ public class LogisticsManager extends LogisticManagerImpl{
         mLogisticManager.mGraph.get(v).add(u);
     }
 
+    @Override
+    public List<Integer> planOptimalRouteforPackage(int source, int destination) {
+        return null;
+    }
 
     public static LogisticsManager getInstance(){
         if (mLogisticManager == null){

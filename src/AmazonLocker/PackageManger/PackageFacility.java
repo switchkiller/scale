@@ -1,4 +1,6 @@
-package AmazonLocker.LogisticsManager;
+package AmazonLocker.PackageManger;
+
+import AmazonLocker.PackageManger.Package;
 
 import java.util.ArrayList;
 import java.util.List;
