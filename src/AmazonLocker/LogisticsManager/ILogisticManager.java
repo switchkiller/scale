@@ -8,6 +8,6 @@ public interface ILogisticManager {
 
     List<Integer> planOptimalRouteforPackage(int source, int destination);
 
-
+    void packageReadyForShipment(int start, int destination, Package pack);
 
 }

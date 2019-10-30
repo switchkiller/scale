@@ -29,6 +29,11 @@ public class LogisticsManager implements ILogisticManager{
         return null;
     }
 
+    @Override
+    public void packageReadyForShipment(int start, int destination, Package pack) {
+
+    }
+
     public static LogisticsManager getInstance(){
         if (mLogisticManager == null){
             mLogisticManager = new LogisticsManager();

@@ -53,3 +53,6 @@ So, basically we are going to adopt, First come first serve facility. (Win Win o
 Q. What about the priority customer? Are all customer treated equal? What about those who are making good profits to company?
 
 
+---
+
+PackageManager Class manages the package.
