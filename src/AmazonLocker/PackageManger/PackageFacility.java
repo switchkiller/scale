@@ -17,6 +17,10 @@ public class PackageFacility {
         mPincode = pincode;
     }
 
+    public void addPackageToFacility(Package pack, Object tracker){
+        mPackage.add(pack);
+    }
+
     public int getPinCode(){
         return mPincode;
     }

@@ -4,15 +4,13 @@ import AmazonLocker.PackageManger.Package;
 import AmazonLocker.PackageManger.PackageFacility;
 import AmazonLocker.PackageManger.PackageManager;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class LogisticsManager implements ILogisticsManager {
     private static LogisticsManager mLogisticManager = null;
     private List[] mGraph;
-    private HashMap<Package, Object> mPackageTracker;
-    private List<PackageFacility> mPackageFacility;
+    private Map<Package, Object> mPackageTracker;
+    private Map<Integer,PackageFacility> mPackageFacility;
 
 
     private LogisticsManager(){
@@ -21,7 +19,8 @@ public class LogisticsManager implements ILogisticsManager {
         for (int i = 0; i < TOTAL_NUMBER_OF_NODES; i++){
             mGraph[i] = new ArrayList<>();
         }
-        mPackageFacility = new ArrayList<>();
+        mPackageFacility = new HashMap<>();
+        mPackageTracker = new HashMap<>();
     }
 
     @Override
@@ -29,12 +28,12 @@ public class LogisticsManager implements ILogisticsManager {
         if (mGraph[u].isEmpty()){
             PackageFacility packageFacility = new PackageFacility();
             packageFacility.addPackageFacility(u);
-            mPackageFacility.add(packageFacility);
+            mPackageFacility.put(u,packageFacility);
         }
         if (mGraph[v].isEmpty()){
             PackageFacility packageFacility = new PackageFacility();
             packageFacility.addPackageFacility(v);
-            mPackageFacility.add(packageFacility);
+            mPackageFacility.put(v,packageFacility);
         }
 
         mGraph[u].add(v);
@@ -42,7 +41,10 @@ public class LogisticsManager implements ILogisticsManager {
     }
 
     public void printAllConnections(){
-        for (PackageFacility packageFacility: mPackageFacility){
+        Iterator packageFacilityIterator = mPackageFacility.entrySet().iterator();
+        while (packageFacilityIterator.hasNext()){
+            Map.Entry packageFacilityEntry = (Map.Entry) packageFacilityIterator.next();
+            PackageFacility packageFacility = (PackageFacility) packageFacilityEntry.getValue();
             System.out.print(packageFacility.getPinCode() + "->");
             for(Object adjacentNode : mGraph[packageFacility.getPinCode()]){
                 System.out.print((int) adjacentNode + " ");
@@ -60,13 +62,19 @@ public class LogisticsManager implements ILogisticsManager {
     @Override
     public void packageReadyForShipment(int start, int destination, final Package pack, Object tracker) {
         mPackageTracker.put(pack,tracker);
-        List<Integer> packagePath = planOptimalRouteforPackage(start,destination);
+//        List<Integer> packagePath = planOptimalRouteforPackage(start,destination);
         // we will traverse the path and make use of observables to keep track of package everytime
-        LogisticAgent logisticAgent = new LogisticAgent(pack, packagePath);
+        List<Integer> packagePath = new ArrayList<>();
+        packagePath.add(101);
+        packagePath.add(102);
+        packagePath.add(103);
+        Queue<Integer> path = new LinkedList<Integer>(packagePath);
+        while(!path.isEmpty()){
+            int nextDestination = path.poll();
+            PackageFacility packageFacility = mPackageFacility.get(nextDestination);
+            packageFacility.addPackageToFacility(pack,tracker);
 
-
-
-
+        }
     }
 
     @Override

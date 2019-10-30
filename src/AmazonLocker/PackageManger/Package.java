@@ -6,7 +6,8 @@ public class Package {
     private int mProductId;
     private Dimen mDimension;
 
-    public Package(){
+    public Package(int id){
+        mProductId = id;
         mDimension = new Dimen();
     }
 }

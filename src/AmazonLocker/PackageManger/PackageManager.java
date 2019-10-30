@@ -5,12 +5,10 @@ import AmazonLocker.LogisticsManager.LogisticsManager;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class PackageManager {
     private List<Tracker> mTracker;
 
-    public PackageManager(Package pack, int start, int end){
+    public void addPackage(Package pack, int start, int end){
         Tracker tracker = new Tracker(pack,start,end);
         mTracker.add(tracker);
         LogisticsManager.getInstance().packageReadyForShipment(start,end,pack,tracker);
