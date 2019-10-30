@@ -4,7 +4,7 @@ import AmazonLocker.PackageManger.Package;
 
 import java.util.List;
 
-public interface ILogisticManager {
+public interface ILogisticsManager {
 
     void addPackageFacility(int source, int destination, int distance);
 

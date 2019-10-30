@@ -17,5 +17,8 @@ public class PackageFacility {
         mPincode = pincode;
     }
 
+    public int getPinCode(){
+        return mPincode;
+    }
 
 }

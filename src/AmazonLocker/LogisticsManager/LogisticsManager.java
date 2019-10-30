@@ -8,34 +8,47 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class LogisticsManager implements ILogisticManager{
+public class LogisticsManager implements ILogisticsManager {
     private static LogisticsManager mLogisticManager = null;
-    private List<List<Integer>> mGraph;
+    private List[] mGraph;
     private HashMap<Package, Object> mPackageTracker;
     private List<PackageFacility> mPackageFacility;
 
 
     private LogisticsManager(){
-        mLogisticManager.mGraph = new ArrayList<>();
+        int TOTAL_NUMBER_OF_NODES = 1000;
+        mGraph = new List[TOTAL_NUMBER_OF_NODES];
+        for (int i = 0; i < TOTAL_NUMBER_OF_NODES; i++){
+            mGraph[i] = new ArrayList<>();
+        }
+        mPackageFacility = new ArrayList<>();
     }
 
     @Override
     public void addPackageFacility(int u, int v, int d){
-        if (mLogisticManager.mGraph.get(u) == null){
+        if (mGraph[u].isEmpty()){
             PackageFacility packageFacility = new PackageFacility();
             packageFacility.addPackageFacility(u);
             mPackageFacility.add(packageFacility);
-            mLogisticManager.mGraph.set(u, new ArrayList<>());
         }
-        if (mLogisticManager.mGraph.get(v) == null){
+        if (mGraph[v].isEmpty()){
             PackageFacility packageFacility = new PackageFacility();
             packageFacility.addPackageFacility(v);
             mPackageFacility.add(packageFacility);
-            mLogisticManager.mGraph.set(v, new ArrayList<>());
         }
 
-        mLogisticManager.mGraph.get(u).add(v);
-        mLogisticManager.mGraph.get(v).add(u);
+        mGraph[u].add(v);
+        mGraph[v].add(u);
+    }
+
+    public void printAllConnections(){
+        for (PackageFacility packageFacility: mPackageFacility){
+            System.out.print(packageFacility.getPinCode() + "->");
+            for(Object adjacentNode : mGraph[packageFacility.getPinCode()]){
+                System.out.print((int) adjacentNode + " ");
+            }
+            System.out.println();
+        }
     }
 
     @Override
@@ -49,6 +62,9 @@ public class LogisticsManager implements ILogisticManager{
         mPackageTracker.put(pack,tracker);
         List<Integer> packagePath = planOptimalRouteforPackage(start,destination);
         // we will traverse the path and make use of observables to keep track of package everytime
+        LogisticAgent logisticAgent = new LogisticAgent(pack, packagePath);
+
+
 
 
     }

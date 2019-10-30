@@ -2,7 +2,7 @@
 
 This will be just a high level design at first and we will try to improve.
 
-CommonUtil:
+CommonUtils:
 
 It will have the most common features which we will be using throughout our project. An example of this is Dimen.
 
@@ -32,9 +32,9 @@ Self explanatory. It is going to fun to implement Logistics :p
 Lets get started
 
 
-LogisticManager:
+LogisticsManager:
 
-Logistic Manager will control Package Facilities.
+Logistics Manager will control Package Facilities.
 It will decide what package goes from which package facility to which package facility based upon destination.
 If we are to nearest locker to user, we will simply drop package to desired locker.
 
