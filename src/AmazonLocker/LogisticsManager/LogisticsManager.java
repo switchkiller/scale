@@ -3,6 +3,7 @@ package AmazonLocker.LogisticsManager;
 import AmazonLocker.PackageManger.Package;
 import AmazonLocker.PackageManger.PackageFacility;
 import AmazonLocker.PackageManger.PackageManager;
+import AmazonLocker.PackageManger.PackageTrackingQueue;
 
 import java.util.*;
 
@@ -69,12 +70,16 @@ public class LogisticsManager implements ILogisticsManager {
         packagePath.add(102);
         packagePath.add(103);
         Queue<Integer> path = new LinkedList<Integer>(packagePath);
+        Queue<PackageFacility> packageFacilities = new LinkedList<>();
+        // Get the package facilities that we are going to use
         while(!path.isEmpty()){
             int nextDestination = path.poll();
             PackageFacility packageFacility = mPackageFacility.get(nextDestination);
-            packageFacility.addPackageToFacility(pack,tracker);
-
+            packageFacilities.add(packageFacility);
         }
+
+        PackageTrackingQueue packageTrackingQueue = new PackageTrackingQueue(pack, packageFacilities, tracker);
+
     }
 
     @Override
