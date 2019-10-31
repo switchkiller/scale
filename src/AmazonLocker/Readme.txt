@@ -56,3 +56,28 @@ Q. What about the priority customer? Are all customer treated equal? What about 
 ---
 
 PackageManager Class manages the package.
+
+Q. Find the shortest path from A to B i.e Start PackageFacility to End PackageFacility for a Package package.
+-> This would be done by LogisticsManager Class.
+
+Basically PackageManager class will ask LogisticsManager class to send it from start to end. LogisticsManager decides the shortest path using graphs.
+
+Now it decides path i.e Package Facilities. We than have to send package through that route. This is done through PackageTrackingQueue.
+
+What it does it basically keep track of the route of the package, keep updating the tracker. This is important. As whenever Package Manager wants to know where the package is, it simple refers to package tracker.
+
+Now we are using observers. This is because each package facility has its own processing. After that is done, we can process the package for further journey and so on.
+
+---
+
+Now that is done, we have created a basic logistic framework. We will keep updating some bugs, and corner cases in between.
+
+But now we can focus on Amazon Locker itself.
+
+-> When package reaches the end facility, we now have to decide the nearest locker. As we have already build some basics, this can be easily done with the help of LockerManager.
+
+LockerManager decides what lockers to target / available / unavailable and so on.
+
+Lets code and have fun with that ;) 
+
+
