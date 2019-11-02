@@ -2,16 +2,16 @@ package AmazonLocker.PackageManger;
 
 import java.util.Queue;
 
-public class PackageTrackingQueue implements Observer{
+public class ProxyPackageTracker implements Observer{
     private Package mPackage;
-    private PackageManager.Tracker mTracker;
+    private ITracker mTracker;
     private Queue<PackageFacility> mPackageFacilities;
     private Subject subject;
 
 
-    public PackageTrackingQueue(Package pack, Queue<PackageFacility> packageFacilities, Object tracker){
+    public ProxyPackageTracker(Package pack, Queue<PackageFacility> packageFacilities, ITracker tracker){
         mPackage = pack;
-        mTracker = (PackageManager.Tracker) tracker;
+        mTracker = tracker;
         mPackageFacilities = packageFacilities;
         processQueue();
     }
@@ -38,11 +38,6 @@ public class PackageTrackingQueue implements Observer{
            packageFacility.processPackage();
         }else{
             System.out.println("Done");
-            System.out.println("History:");
-
-            for(Integer pincode: mTracker.mHistory){
-                System.out.print(pincode + " ");
-            }
         }
     }
 

@@ -78,6 +78,6 @@ But now we can focus on Amazon Locker itself.
 
 LockerManager decides what lockers to target / available / unavailable and so on.
 
-Lets code and have fun with that ;) 
+Lets code and have fun with that ;)
 
 

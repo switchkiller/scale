@@ -12,6 +12,11 @@ public class PackageManager {
         Tracker tracker = new Tracker(pack,start,end);
         mTracker.add(tracker);
         LogisticsManager.getInstance().packageReadyForShipment(start,end,pack,tracker);
+
+        for(Tracker track: mTracker){
+            System.out.print(track.mHistory + " ");
+        }
+
     }
 
     public PackageManager(){
@@ -20,11 +25,11 @@ public class PackageManager {
 
 
 
-    public class Tracker{
-        Package mPack;
-        int start;
-        int end;
-        List<Integer> mHistory;
+    public class Tracker implements ITracker{
+        private Package mPack;
+        private int start;
+        private int end;
+        private List<Integer> mHistory;
 
         Tracker(Package pack, int start, int end){
             mPack = pack;
@@ -33,6 +38,7 @@ public class PackageManager {
             mHistory = new ArrayList<>();
         }
 
+        @Override
         public void updateHistory(int position){
             mHistory.add(position);
         }

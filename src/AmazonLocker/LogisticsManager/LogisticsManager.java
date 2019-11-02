@@ -1,9 +1,7 @@
 package AmazonLocker.LogisticsManager;
 
+import AmazonLocker.PackageManger.*;
 import AmazonLocker.PackageManger.Package;
-import AmazonLocker.PackageManger.PackageFacility;
-import AmazonLocker.PackageManger.PackageManager;
-import AmazonLocker.PackageManger.PackageTrackingQueue;
 
 import java.util.*;
 
@@ -61,7 +59,7 @@ public class LogisticsManager implements ILogisticsManager {
     }
 
     @Override
-    public void packageReadyForShipment(int start, int destination, final Package pack, Object tracker) {
+    public void packageReadyForShipment(int start, int destination, final Package pack,ITracker tracker) {
         mPackageTracker.put(pack,tracker);
 //        List<Integer> packagePath = planOptimalRouteforPackage(start,destination);
         // we will traverse the path and make use of observables to keep track of package everytime
@@ -78,7 +76,7 @@ public class LogisticsManager implements ILogisticsManager {
             packageFacilities.add(packageFacility);
         }
 
-        PackageTrackingQueue packageTrackingQueue = new PackageTrackingQueue(pack, packageFacilities, tracker);
+        ProxyPackageTracker proxyPackageTracker = new ProxyPackageTracker(pack, packageFacilities, tracker);
 
     }
 
