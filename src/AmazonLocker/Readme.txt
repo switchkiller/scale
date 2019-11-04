@@ -81,3 +81,29 @@ LockerManager decides what lockers to target / available / unavailable and so on
 Lets code and have fun with that ;)
 
 
+--- Designing LockerManager, Locker, ShelveManger and Shelve class.
+
+Do we need interface for LockerManger or ShelveManager?
+
+-> For this, we have to answer if we are going to answer if we are going to use Object of LockerManager Class anywhere else and make specific access to some function.
+
+Is delivery to locker considered as a complete process from Logistic partner end?
+Q. What is the most optimal way to provide shelves to package which have a dynamic timing. We have to treat each package dimen into consideration so on and so forth.
+
+The main thing here is to maintain consistency.
+
+-> Things will depend on how package arrive. So order of arrival at last package facility determines what locker is assigned.
+
+With this we depend less on PackageManager. So it doesnot have to worry. Our idea of using a common tracker will help it to get runtime state of package.
+
+1. Package is allocated a locker
+2. Package is waiting for a locker to get free.
+
+Two trivial things might happen.
+
+How I think of it is:
+
+1. Every Packing facility will maintain a AlmostReachedQueue which will have packages which just needs to get delivered to the locker now.
+2. Each package facility will observe nearby lockers, and as soon as any of shelve is available, it with the help of LockerManager will assign it to locker.
+
+Simple.
