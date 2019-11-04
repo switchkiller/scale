@@ -3,6 +3,7 @@ package AmazonLocker.PackageManger;
 import AmazonLocker.LogisticsManager.LogisticsManager;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class PackageManager {
@@ -41,6 +42,15 @@ public class PackageManager {
         @Override
         public void updateHistory(int position){
             mHistory.add(position);
+        }
+
+        public int getEndPos(){
+            Iterator iter = mHistory.iterator();
+            int endPos = -1;
+            while(iter.hasNext()){
+                endPos = (int) iter.next();
+            }
+            return endPos;
         }
     }
 }

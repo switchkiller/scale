@@ -9,7 +9,7 @@ public class LogisticsManager implements ILogisticsManager {
     private static LogisticsManager mLogisticManager = null;
     private List[] mGraph;
     private Map<Package, Object> mPackageTracker;
-    private Map<Integer,PackageFacility> mPackageFacility;
+    public static Map<Integer,PackageFacility> mPackageFacility;
 
 
     private LogisticsManager(){
@@ -80,11 +80,26 @@ public class LogisticsManager implements ILogisticsManager {
 
     }
 
+
+
     @Override
     public void updateHistory(Package pack, int position) {
         if (mPackageTracker.containsKey(pack)){
             PackageManager.Tracker tracker = (PackageManager.Tracker) mPackageTracker.get(pack);
             tracker.updateHistory(position);
+        }
+    }
+
+    @Override
+    public void hasReachedEndFacility(final Package pack) {
+        PackageManager.Tracker tracker = (PackageManager.Tracker) mPackageTracker.get(pack);
+        int endPos = tracker.getEndPos();
+        if (endPos == -1){
+            System.out.println("Not possible");
+        } else{
+            System.out.println("Updated list at: " + endPos);
+            PackageFacility packageFacility = mPackageFacility.get(endPos);
+            packageFacility.updateWaitingList(pack);
         }
     }
 

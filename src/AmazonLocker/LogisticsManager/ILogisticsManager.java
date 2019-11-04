@@ -15,4 +15,6 @@ public interface ILogisticsManager {
 
     void updateHistory(Package pack, int position);
 
+    void hasReachedEndFacility(final Package pack);
+
 }

@@ -107,3 +107,14 @@ How I think of it is:
 2. Each package facility will observe nearby lockers, and as soon as any of shelve is available, it with the help of LockerManager will assign it to locker.
 
 Simple.
+
+
+---
+
+We are going to observe the package facilities which are nearby (depending on our need)
+
+-> Call updateWaitingList() present iin LogisticsManager.
+
+Locker is observable and LockerManager is observer. As soon as Locker is available, locker manager will assign a package to nearby locker accordingly (On the basis of priority queue on a package facility)
+
+

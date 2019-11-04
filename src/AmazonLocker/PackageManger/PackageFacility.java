@@ -1,16 +1,30 @@
 package AmazonLocker.PackageManger;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class PackageFacility implements Subject{
     private int mPincode;
     private List<Observer> mObservers;
     private List<Package> mPackage;
+    private List<Package> mPackageToDeliverList;
 
     public PackageFacility(){
         mPackage = new ArrayList<>();
         mObservers = new ArrayList<>();
+        mPackageToDeliverList = new LinkedList<>();
+    }
+
+    public void updateWaitingList(Package pack){
+        mPackageToDeliverList.add(pack);
+    }
+
+    public Package getPriorityPackage(){
+        if (mPackageToDeliverList.isEmpty()) return null;
+        else{
+            return null;
+        }
     }
 
     public void addPackageFacility(int pincode){

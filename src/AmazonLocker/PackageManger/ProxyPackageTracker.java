@@ -1,5 +1,7 @@
 package AmazonLocker.PackageManger;
 
+import AmazonLocker.LogisticsManager.LogisticsManager;
+
 import java.util.Queue;
 
 public class ProxyPackageTracker implements Observer{
@@ -38,6 +40,7 @@ public class ProxyPackageTracker implements Observer{
            packageFacility.processPackage();
         }else{
             System.out.println("Done");
+            LogisticsManager.getInstance().hasReachedEndFacility(mPackage);
         }
     }
 
